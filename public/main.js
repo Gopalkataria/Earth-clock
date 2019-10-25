@@ -72,8 +72,7 @@ function get_time(offset, elem_id, abbr, info) {
 
 
     // date object to  be used for getting time
-    var date = new Date
-    var new_time = (date.getUTCHours()) * 60 + date.getUTCMinutes() + offset
+    var { new_time, date } = Global_time(offset);
 
     if (x) {
         new_time = new_time < 0 ? 1440 + new_time : new_time
@@ -84,6 +83,12 @@ function get_time(offset, elem_id, abbr, info) {
     }
 
 
+}
+
+function Global_time(offset) {
+    var date = new Date;
+    var new_time = (date.getUTCHours()) * 60 + date.getUTCMinutes() + offset;
+    return { new_time, date };
 }
 
 // making time cards [ all places on earth !! ]
