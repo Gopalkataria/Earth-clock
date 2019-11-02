@@ -2,7 +2,7 @@
 <br/>
 <h2> Now you can see time all around the world </h2>
 <br/>
-See it in action at <a href="www.earth-clock.firebaseapp.com">www.earth-clock.firebaseapp.com</a>
+See it in action at <a href="http://www.earth-clock.firebaseapp.com">www.earth-clock.firebaseapp.com</a>
 
 
 
