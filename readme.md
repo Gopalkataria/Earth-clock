@@ -1,3 +1,16 @@
+<h1>The Earth Clock </h1>
+<br/>
+<h2> Now you can see time all around the world </h2>
+<br/>
+See it in action at <a>www.earth-clock.firebaseapp.com</a>
+
+
+
+
+
+
+
+
 
 Copyright (c) 2019 Gopal Kataria
 
