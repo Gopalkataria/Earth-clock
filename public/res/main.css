@@ -3,19 +3,19 @@
 
 Copyright (c) 2019 Gopal Kataria
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
-associated documentation files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, publish, distribute, 
-sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or 
+The above copyright notice and this permission notice shall be included in all copies or
 substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
- NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
- NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
- DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT 
+ NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
  OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -39,7 +39,8 @@ body {
       justify-content: flex-start;
     }
 
-    
+
+
 
 
 .header {
@@ -54,7 +55,8 @@ body {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
-      font-size: 20px;
+      font-size: 35px;
+      font-weight: 800 ;
       height: 110px;
       justify-content: flex-start;
       padding: 16px 16px 0 16px;
@@ -63,7 +65,7 @@ body {
       width: 100%;
       will-change: transform;
       z-index: 1000;
-      text-align: center ; 
+      text-align: left  ;
     }
 
 .header h1 {
@@ -80,19 +82,20 @@ body {
   font-size: 20px;
   font-weight: 40;
   margin: 0;
-} 
+}
 .header {
-    font-size:  20px ; 
+    font-size:  20px ;
+    font-weight: 500 ;
     height: 40px ;
 }
     }
 
 
 
- 
 
-/** 
-* loading circle 
+
+/**
+* loading circle
 */
 
 .card-spinner {
@@ -154,45 +157,45 @@ body {
 
 .cards {
 
-  transition: ease-in-out; 
-text-align: left ; 
+  transition: ease-in-out;
+text-align: left ;
   width: 70% ;
   overflow: hidden;
-  font-size: 20px ; 
+  font-size: 20px ;
   background: #fff;
-  border-radius: 2px; 
+  border-radius: 2px;
   box-shadow: 3px -4px 4px 3px rgba(0, 0, 0, 0.14),
    0 3px 5px 2px rgba(0, 0, 0, 0.2),
     0 1px 7px 3px rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   margin: 16px;
   padding: 16px;
-  position: relative ; 
-  top: 120px ; 
-  font-weight: 600 ; 
-  left: 10% ; 
+  position: relative ;
+  top: 120px ;
+  font-weight: 600 ;
+  left: 10% ;
 
 
 }
 .cards input {
-  width: min-content ; 
+  width: min-content ;
 }
 
 #srch {
-  
+
   -webkit-transition: width 0.8s ease-in-out;
   transition: width 0.8s  ease-in-out;
 
-  width: 50% ; 
-  text-align: center ; 
+  width: 50% ;
+  text-align: center ;
 
-  visibility: hidden ; 
+  visibility: hidden ;
   display: none;
   z-index: 100;
-  position: fixed ; 
-  top: 25% ; 
-  left: 15% ; 
-  box-shadow: 
+  position: fixed ;
+  top: 25% ;
+  left: 15% ;
+  box-shadow:
     0 2px 2px 0 rgba(0, 0, 0, 0.548),
     0 3px 1px -2px rgba(0, 0, 0, 0.548),
     0 1px 5px 0 rgba(0, 0, 0, 0.548);
@@ -201,14 +204,14 @@ text-align: left ;
 #srch:focus {
 
 
-  width : 70% ; 
+  width : 70% ;
   left: 10% ;
 }
 
 .big {
 
   width: 70% ;
-  font-size: 15% ; 
+  font-size: 15% ;
   background: #fff;
   border-radius: 2px;
   box-shadow:
@@ -218,48 +221,48 @@ text-align: left ;
   box-sizing: border-box;
   margin: 16px;
   padding: 16px;
-  position: relative ; 
-  top: 120px ; 
-  left: 10% ; 
+  position: relative ;
+  top: 120px ;
+  left: 10% ;
 
 }
 
 
 
-@media (max-width: 500px) { 
-  
+@media (max-width: 500px) {
+
 .cards {
-  
-  
-  top: 50px ; 
-  left : 5% ; 
+
+
+  top: 50px ;
+  left : 5% ;
 }
 .cards input {
    margin: 6px;
   padding: 6px;
-  font-size: 15px ; 
+  font-size: 15px ;
 }
 
 }
 
 .list_items {
-  font-size: 10% ; 
-  font-family: Helvetica ; 
+  font-size: 10% ;
+  font-family: Helvetica ;
 }
 
 
-@media (min-width: 1024px) { 
-  
+@media (min-width: 1024px) {
+
   .cards {
- font-size: 25px ;   
-  top: 150px ; 
-  left : 15% ; 
+ font-size: 25px ;
+  top: 150px ;
+  left : 15% ;
 }
 .cards input {
   visibility: hidden ;
    margin: 26px;
   padding: 26px;
-  font-size: 25px ; 
+  font-size: 25px ;
 }
 
 }
@@ -267,7 +270,7 @@ text-align: left ;
 
 .btn {
 
-font-size: 15px ; 
+font-size: 15px ;
   background-color: #3f51b5;
   border-radius: 50%;
   bottom: 1rem;
@@ -285,7 +288,7 @@ box-shadow: 0 0 11px 1px black;
 }
 
 
-.remove_btn { 
+.remove_btn {
   background-color: transparent;
   border: none;
   font-size: large;
@@ -298,5 +301,31 @@ box-shadow: 0 0 11px 1px black;
 }
 
 .time {
-  color : #000000 ; 
+  color : #000000 ;
+}
+
+#head {
+  position: relative;
+  left: 10% ;
+}
+
+#install_b {
+
+position: fixed  ;
+
+top: 5% ;
+right: 15% ;
+
+width: auto ;
+
+background: #45ca2a ;
+
+font-size: 20px  ;
+
+font-weight: 500 ;
+
+border : none ;
+text-align: center;
+padding: 2px 2px ;
+
 }

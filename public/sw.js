@@ -29,8 +29,8 @@
 
 
 
-const Cache_name = "com.crossbox.cache.V_0.1";
-const Cache_items = [ // items to cache 
+const Cache_name = "com.crossbox.cache.V_1.0.001";
+const Cache_items = [ // items to cache
     '/',
     'index.html',
     '/main.js',
@@ -41,7 +41,7 @@ const Cache_items = [ // items to cache
 
 ];
 
-const Static_cache_name = "com.cossbox.static_cache.V_0.1"
+const Static_cache_name = "com.crossbox.static_cache.V_1.0.001"
 
 
 self.addEventListener('install', function (event) {
@@ -58,7 +58,7 @@ self.addEventListener('install', function (event) {
 });
 
 
-//deleting old cache 
+//deleting old cache
 self.addEventListener('activate', (evt) => {
     evt.waitUntil(
         caches.keys().then((keyList) => {
@@ -75,7 +75,7 @@ self.addEventListener('activate', (evt) => {
 })
 
 
-// returning offline copy even if online 
+// returning offline copy even if online
 
 self.addEventListener('fetch', event => {
     console.log('[ServiceWorker] Fetch event for ', event.request.url);

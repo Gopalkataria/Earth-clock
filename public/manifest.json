@@ -40,7 +40,7 @@
         }
     ],
     "background_color": "#e4d8f3",
-    "theme_color": "#c5eaffd0",
+    "theme_color": "#2a2dca",
     "start_url": "/index.html?arrival_src=homescreen",
     "display": "standalone",
     "orientation": "portrait"
