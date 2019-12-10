@@ -374,3 +374,48 @@ if ("serviceWorker" in navigator) { // checking if the browser can use it
     })
 }
 
+
+// thanks to www.pwabuilder.com for providing this code snippet and this idea
+
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+});
+
+async function install() {
+
+    // first  remove the install button
+
+    btn = document.getElementById('install_b')
+    btn.style.visibility = 'hidden'
+    btn.style.display = 'none'
+
+    // open prompt
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        console.log(deferredPrompt)
+        deferredPrompt.userChoice.then(function (choiceResult) {
+
+            if (choiceResult.outcome === 'accepted') {
+                console.log('Your PWA has been installed');
+            } else {
+                console.log('User chose to not install your PWA');
+            }
+
+            deferredPrompt = null;
+
+        });
+
+
+    }
+}
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    btn = document.getElementById('install_b')
+    btn.style.visibility = 'hidden'
+    btn.style.display = 'none'
+}

@@ -29,85 +29,88 @@
 
 
 
-const Cache_name = "com.crossbox.cache.V_0.1";
-const Cache_items = [ // items to cache 
-    '/',
-    'index.html',
-    '/main.js',
-    '/res/main.css',
-    '/res/timezones.js',
-    '/404.html'
+// This is the service worker with the Cache-first network
+
+// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+
+const CACHE = "com.crossbox.cache.V_1.0.101";
+const precacheFiles = [ // items to cache
+        '/',
+        'index.html',
+        '/main.js',
+        '/res/main.css',
+        '/res/timezones.js',
+        '/404.html'
+
 
 
 ];
 
-const Static_cache_name = "com.cossbox.static_cache.V_0.1"
 
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
+const offlineFallbackPage = "/offline.html";
 
-self.addEventListener('install', function (event) {
-    // Perform install steps
-    console.log("[ServiceWorker] Caching Items")
+// Install stage sets up the offline page in the cache and opens a new cache
+self.addEventListener("install", function (event) {
+    console.log("[PWA Builder] Install Event processing");
+
     event.waitUntil(
-        caches.open(Cache_name)
-            .then(function (cache) {
-                console.log('[ServiceWorker] Cached all Items' + Cache_items);
-                return cache.addAll(Cache_items);
-            })
-    );
-    self.skipWaiting()
-});
+        caches.open(CACHE).then(function (cache) {
+            console.log("[PWA Builder] Cached offline page during install");
 
+            if (offlineFallbackPage === "/offline.html") {
+                return cache.add(new Response("TODO: Update the value of the offlineFallbackPage constant in the serviceworker."));
+            }
 
-//deleting old cache 
-self.addEventListener('activate', (evt) => {
-    evt.waitUntil(
-        caches.keys().then((keyList) => {
-            return Promise.all(keyList.map((key) => {
-                if (key !== Cache_name || key !== Static_cache_name) {
-                    console.log('[ServiceWorker] Removing old cache', key);
-                    return caches.delete(key);
-                }
-            }));
+            return cache.add(offlineFallbackPage);
         })
     );
+});
 
-    self.clients.claim();
-})
+// If any fetch fails, it will look for the request in the cache and serve it from there first
+self.addEventListener("fetch", function (event) {
+    if (event.request.method !== "GET") return;
 
-
-// returning offline copy even if online 
-
-self.addEventListener('fetch', event => {
-    console.log('[ServiceWorker] Fetch event for ', event.request.url);
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    console.log('[ServiceWorker] Found cache ', event.request.url);
-                    return response;
-                }
-                console.log('[ServiceWorker] Network request for ', event.request.url);
-                return fetch(event.request)
-                    .then(response => {
-                        return caches.open(Static_cache_name)
-                            .then(cache => {
-                                cache.put(event.request.url, response.clone());
-                                console.log("[ServiceWorker] cached unavailable resource  " + event.request.url)
-                                return response
-                            });
-                    });
+        fetch(event.request)
+            .then(function (response) {
+                console.log("[PWA Builder] add page to offline cache: " + response.url);
 
-            }).catch(error => {
-                caches.open(Cache_name).then(cache => {
-                    console.log("[ServiceWorker]  error 404  " + error);
-                    return cache.match('/404.html');
-                });
+                // If request was success, add or update it in the cache
+                event.waitUntil(updateCache(event.request, response.clone()));
 
-
+                return response;
+            })
+            .catch(function (error) {
+                console.log("[PWA Builder] Network request Failed. Serving content from cache: " + error);
+                return fromCache(event.request);
             })
     );
 });
 
+function fromCache(request) {
+    // Check to see if you have it in the cache
+    // Return response
+    // If not in the cache, then return the offline page
+    return caches.open(CACHE).then(function (cache) {
+        return cache.match(request).then(function (matching) {
+            if (!matching || matching.status === 404) {
+                // The following validates that the request was for a navigation to a new document
+                if (request.destination !== "document" || request.mode !== "navigate") {
+                    return Promise.reject("no-match");
+                }
 
+                return cache.match(offlineFallbackPage);
+            }
 
+            return matching;
+        });
+    });
+}
 
+function updateCache(request, response) {
+    return caches.open(CACHE).then(function (cache) {
+        return cache.put(request, response);
+    });
+}
