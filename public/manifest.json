@@ -6,10 +6,10 @@
 "display": "standalone",
 "start_url": "/index.html",
 "short_name": "Earth Clock",
-"theme_color": "#5daabd",
+"theme_color": "#2a2dca",
 "description": "Earth clock : a world clock ",
 "orientation": "portrait",
-"background_color": "#5daabd" ,
+"background_color": "#2a2dca" ,
 "icons": [
   {
     "src": "/android-chrome-192x192.png",

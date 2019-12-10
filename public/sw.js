@@ -34,7 +34,7 @@
 // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
 
-const CACHE = "com.crossbox.cache.V_1.0.1001";
+const CACHE = "com.crossbox.cache.V_1.0.101";
 const precacheFiles = [ // items to cache
         '/',
         'index.html',
