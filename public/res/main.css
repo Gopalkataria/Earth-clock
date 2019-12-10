@@ -331,3 +331,18 @@ text-align: center;
 padding: 2px 2px ;
 
 }
+
+#install_b:active {
+
+  background: red;
+background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(3px);
+}
+
+
+#install_b:hover {
+  color: white ;
+  background: #1a9c00;
+
+}
