@@ -41,19 +41,18 @@
 'use strict';
 
 
-// web app config firebase hheerree
-var firebaseConfig = {
-    apiKey: "AIzaSyAv-znMUI_JPhnW2G_EoMisF0TP4zkOWGI",
-    authDomain: "earth-clock.firebaseapp.com",
-    databaseURL: "https://earth-clock.firebaseio.com",
-    projectId: "earth-clock",
-    storageBucket: "earth-clock.appspot.com",
-    messagingSenderId: "734447679901",
-    appId: "1:734447679901:web:93bbdfaddb409023f4d774",
-    measurementId: "G-FY34E6WKLG"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    firebase.analytics().logEvent('select_content', {
+
+        content : navigator
+    });
+
+
+});
+
+
 
 
 // firebase in up !!
@@ -134,8 +133,8 @@ function make_card(zone) {
             }
 
         });
-        set_cookie_time()
-        Timezone_cities = get_cookie_time()
+        set_db_time()
+        Timezone_cities = get_db_time()
 
 
     });
@@ -152,7 +151,7 @@ function add_city(Timezone, Timezone_id) {
         if (!document.getElementById(Timezone_id)) {
             if (zone.id == Timezone_id) {
                 make_card(zone)
-                set_cookie_time()
+                set_db_time()
             }
         }
     });
@@ -161,7 +160,7 @@ function add_city(Timezone, Timezone_id) {
 
 
 // list of timezones to be added
-var Timezone_cities = get_cookie_time()
+var Timezone_cities = get_db_time()
 
 
 //
@@ -243,7 +242,7 @@ function search(e) {
 }
 
 
-function set_cookie_time() {
+function set_db_time() {
 
     if (Timezone_cities) {
         document.cookie = escape(Timezone_cities)
@@ -251,7 +250,7 @@ function set_cookie_time() {
         document.cookie = ['tz35']
     }
 }
-function get_cookie_time() {
+function get_db_time() {
 
     var times = unescape(document.cookie).split(',')
     if (times.reverse()[0].indexOf("tz") > -1 ) {
@@ -330,8 +329,8 @@ window.addEventListener('load', () => {
     add_all_times(Timezone)
     const refresh_rate = 1000
     window.setInterval('refresh_time()', refresh_rate)
-    remove_loading_circle()
-    Timezone_cities = get_cookie_time()
+    window.setTimeout('remove_loading_circle()' , 1000 )
+    Timezone_cities = get_db_time()
 });
 
 document.addEventListener('keydown', evt => {
@@ -419,3 +418,23 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
     btn.style.visibility = 'hidden'
     btn.style.display = 'none'
 }
+
+
+
+
+
+// send activity detection to firebase
+function activity_detected() {
+    firebase.analytics().logEvent('activity detected');
+}
+
+
+var cb = function () {
+    var l = document.createElement('link'); l.rel = 'stylesheet';
+    l.href = '/res/main.css';
+    var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(cb);
+else window.addEventListener('load', cb);

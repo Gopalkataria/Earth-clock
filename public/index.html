@@ -22,9 +22,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 
     <head>
-<link rel='manifest' href='/manifest.json'>
 
-        <link rel="stylesheet" type="text/css" href="\res\main.css">
+        <link rel='manifest' href='/manifest.json'>
 
 
 
@@ -32,18 +31,137 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#2a2dca">
 
         <title>Earth Clock</title>
 
+        <style>
 
 
-<meta name="Description" content="Owner: Gopal Kataria,
-             Category: Online World Clock ">
+.header {
+      align-content: center;
+      align-items: stretch;
+      background: #2a2dca;
+      box-shadow:
+        0 4px 5px 0 rgba(0, 0, 0, 0.14),
+        0 2px 9px 1px rgba(0, 0, 0, 0.12),
+        0 4px 2px -2px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      font-size: 35px;
+      font-weight: 800 ;
+      height: 110px;
+      justify-content: flex-start;
+      padding: 16px 16px 0 16px;
+      position: fixed;
+      transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
+      width: 100%;
+      will-change: transform;
+      z-index: 500;
+      text-align: left  ;
+    }
+
+.header h1 {
+  flex: 1;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (max-width: 500px) {
+
+       .header h1 {
+  flex: 1;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0;
+}
+.header {
+    font-size:  20px ;
+    font-weight: 500 ;
+    height: 40px ;
+}
+    }
+
+
+
+
+
+/**
+* loading circle
+*/
+
+.card-spinner {
+  background-color: rgba(0, 0, 0);
+  height: 100%;
+  top: 0px;
+  left : 0px ;
+  position: fixed ;
+  width: 100%;
+  z-index: 600 ;
+}
+
+.card-spinner svg {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px ;
+  width: 200px ;
+  border : none ;
+border-radius: 10% ;
+}
+
+.card-spinner svg circle {
+  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
+  box-sizing: border-box;
+  stroke: #3f51b5;
+  stroke-width: 19px;
+  transform-origin: 50%;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0); }
+  to { transform: rotate(450deg); }
+}
+
+@keyframes line {
+  0% {
+    stroke-dasharray: 2, 85.964;
+    transform: rotate(0);
+    stroke: #5e35ce
+  }
+  25%{
+       stroke: #4b59db
+  }
+
+  50% {
+    stroke-dasharray: 65.973, 21.9911;
+    stroke-dashoffset: 0;
+    stroke: #48df34
+  }
+
+75% {
+     stroke: #c7c425
+}
+
+  100% {
+    stroke-dasharray: 2, 85.964;
+    stroke-dashoffset: -65.973;
+    transform: rotate(90deg);
+    stroke: #35ce42
+  }
+}
+</style>
+
+
+<meta name="Description" content=" Online World Clock, Owner : Gopal Kataria ">
 
     </head>
 
@@ -78,8 +196,17 @@ Firebase is firing in now !!
 
 -->
 
-        <script defer src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
-        <!--  -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script defer src="/__/firebase/7.6.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script defer src="/__/firebase/7.6.0/firebase-analytics.js"></script>
+
+        <!-- Initialize Firebase -->
+        <script defer src="/__/firebase/init.js"></script>
+
+
         <script defer src="\main.js"></script>
         <script defer src="\res\timezones.js"></script>
 
