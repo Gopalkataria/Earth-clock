@@ -233,3 +233,18 @@ background-color: #3e8e41;
   background: #1a9c00;
 
 }
+
+@media (max-width: 350px) {
+
+  #install {
+    display: none ;
+    visibility: hidden ;
+  }
+}
+
+@media (max-width: 500px){
+  #install {
+    right: 0%;
+    top: 0%;
+  }
+}

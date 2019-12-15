@@ -115,15 +115,33 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
   height: 200px ;
   width: 200px ;
   border : none ;
-border-radius: 10% ;
+border-radius: 50% ;
 }
 
 .card-spinner svg circle {
-  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
+  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite, grsh 1.6s linear infinite;
   box-sizing: border-box;
   stroke: #3f51b5;
   stroke-width: 19px;
-  transform-origin: 50%;
+  transform-origin: 48%;
+}
+
+@keyframes grsh {
+    0% {
+    stroke-width: 5px;
+  }
+  25%{
+      stroke-width: 8px;
+  }
+   50% {
+    stroke-width: 25px;
+  }
+  75%{
+      stroke-width: 8x;
+  }
+  100% {
+      stroke-width: 5px;
+  }
 }
 
 @keyframes rotate {
@@ -135,20 +153,20 @@ border-radius: 10% ;
   0% {
     stroke-dasharray: 2, 85.964;
     transform: rotate(0);
-    stroke: #5e35ce
+    stroke: red
   }
   25%{
-       stroke: #4b59db
+       stroke: blue
   }
 
   50% {
     stroke-dasharray: 65.973, 21.9911;
     stroke-dashoffset: 0;
-    stroke: #48df34
+    stroke: green
   }
 
 75% {
-     stroke: #c7c425
+     stroke: yellow
 }
 
   100% {

@@ -329,7 +329,9 @@ window.addEventListener('load', () => {
     add_all_times(Timezone)
     const refresh_rate = 1000
     window.setInterval('refresh_time()', refresh_rate)
-    window.setTimeout('remove_loading_circle()' , 1000 )
+
+
+    window.setTimeout('remove_loading_circle()' , 500 )
     Timezone_cities = get_db_time()
 });
 
@@ -368,7 +370,7 @@ if ("serviceWorker" in navigator) { // checking if the browser can use it
             console.log("service worker registered \n scope :" + register.scope)
         }).catch(function (err) {
             // catching any errors and logging
-            console.log("service worker was not registered \n error : " + err)
+            console.error("service worker was not registered \n error : " + err)
         })
     })
 }
@@ -438,3 +440,5 @@ var raf = requestAnimationFrame || mozRequestAnimationFrame ||
     webkitRequestAnimationFrame || msRequestAnimationFrame;
 if (raf) raf(cb);
 else window.addEventListener('load', cb);
+
+

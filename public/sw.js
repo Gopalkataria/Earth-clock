@@ -25,7 +25,7 @@
 //      FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //      OTHER DEALINGS IN THE SOFTWARE
 
-
+'use strict';
 
 
 
@@ -34,16 +34,15 @@
 // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
 
-const CACHE = "com.crossbox.cache.V_1.0.107";
+
+const CACHE = "com.crossbox.cache.V_1.10.107";
 const precacheFiles = [ // items to cache
     '/',
-    '/icons/*',
-        '/index.html',
-        'index.html',
-        '/main.js',
-        '/res/main.css',
-        '/res/timezones.js',
-        '/404.html'
+    'index.html',
+    '/main.js',
+    '/res/main.css',
+    '/res/timezones.js',
+    '/404.html'
 
 
 
